@@ -34,7 +34,6 @@ namespace GRP16.JandB
         {
             zAngle = transform.localEulerAngles.z;
             zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
-            Debug.Log(zAngle);
         }
 
         void FixedUpdate()
@@ -67,14 +66,23 @@ namespace GRP16.JandB
 
         public void UpdatePalette()
         {
-            //palettes.transform.localPosition += new Vector3(0, Input.GetAxis("Mouse Y") * paletteSpeed, 0);
-            palettes.transform.localPosition = new Vector3(0, Mathf.SmoothDamp(palettes.transform.position.y, paletteSpeed * Input.GetAxis("Mouse Y"), ref paletteVelocity, .2f));
+            palettes.transform.localPosition += new Vector3(0, Input.GetAxis("Mouse Y") * paletteSpeed, 0);
+            //palettes.transform.localPosition = new Vector3(0, Mathf.SmoothDamp(palettes.transform.position.y, paletteSpeed * Input.GetAxis("Mouse Y"), ref paletteVelocity, .2f));
             palettes.transform.localPosition = new Vector3(0, Mathf.Clamp(palettes.transform.localPosition.y, palettesMinimumPosition, palettesMaximumPosition), 0);
         }
 
         public void Move()
         {
             transform.position += new Vector3(0, 0, speed);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Wall")
+            {
+                speed = 0f;
+                Debug.Log("Loose !");
+            }
         }
     }
 }
