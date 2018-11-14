@@ -16,6 +16,6 @@ public class FourchesUIScript : MonoBehaviour
 	
 	void Update ()
     {
-        fourchesUI.transform.position = new Vector3(posFourchesUIStart.x, posFourchesUIStart.y + fourches.transform.position.y * 150, posFourchesUIStart.z);
+        fourchesUI.transform.position = new Vector3(posFourchesUIStart.x, posFourchesUIStart.y + (fourches.transform.position.y - 1) * 150, posFourchesUIStart.z);
 	}
 }

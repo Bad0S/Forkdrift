@@ -34,7 +34,7 @@ namespace GRP16.JandB
         {
             zAngle = transform.localEulerAngles.z;
             zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
-            Debug.Log(zAngle);
+            //Debug.Log(zAngle);
         }
 
         void FixedUpdate()
