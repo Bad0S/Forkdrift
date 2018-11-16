@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerScript : MonoBehaviour
+namespace GRP16.JandB
 {
-    public float timer;
-    public Text timerText;
+    public class TimerScript : MonoBehaviour
+    {
+        public TMPro.TextMeshProUGUI timerText;
+        public float timer;
 
-	void Start ()
-    {
-		
-	}
-	
-	void Update ()
-    {
-		if (timer > 0)
+        void Start()
         {
-            timer -= Time.deltaTime;
+
         }
-        if (timer <= 0)
+
+        void Update()
         {
-            Debug.Log("C'est fini");
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            if (timer <= 0)
+            {
+                Debug.Log("C'est fini");
+            }
+            timerText.text = Mathf.CeilToInt(timer).ToString();
         }
-        timerText.text = Mathf.CeilToInt(timer).ToString();
-	}
+    }
 }

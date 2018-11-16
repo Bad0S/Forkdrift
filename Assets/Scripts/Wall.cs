@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace GRP16.JandB
 {
-    public interface IWall{
-
+    public interface IWall
+    {
         void Touched();
     }
 

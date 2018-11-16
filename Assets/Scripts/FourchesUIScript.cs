@@ -3,19 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FourchesUIScript : MonoBehaviour
+namespace GRP16.JandB
 {
-    public GameObject fourches;
-    public Image fourchesUI;
-    private Vector3 posFourchesUIStart;
+    public class FourchesUIScript : MonoBehaviour
+    {
+        public GameObject fourches;
+        public Image fourchesUI;
+        public Image verticalBarUI;
 
-	void Start ()
-    {
-        posFourchesUIStart = fourchesUI.transform.position;
-	}
-	
-	void Update ()
-    {
-        fourchesUI.transform.position = new Vector3(posFourchesUIStart.x, posFourchesUIStart.y + (fourches.transform.position.y - 1) * 150, posFourchesUIStart.z);
-	}
+        #region privateVariables
+        Vector3 posFourchesUIStart;
+        float maxFourchesPosUI;
+        float minFourchesPosUI;
+        float FourchesPosUI;
+        float minFourchesPosGo;
+        float maxFourchesPosGo;
+        #endregion
+
+        void Start()
+        {
+            posFourchesUIStart = fourchesUI.rectTransform.localPosition;
+            FourchesPosUI = posFourchesUIStart.y;
+            minFourchesPosUI = verticalBarUI.rectTransform.localPosition.y - verticalBarUI.rectTransform.rect.height / 2 + fourchesUI.rectTransform.rect.height / 2;
+            maxFourchesPosUI = verticalBarUI.rectTransform.localPosition.y + verticalBarUI.rectTransform.rect.height / 2 - fourchesUI.rectTransform.rect.height / 2;
+            minFourchesPosGo = fourches.GetComponentInParent<Transpalette>().palettesMinimumPosition;
+            maxFourchesPosGo = fourches.GetComponentInParent<Transpalette>().palettesMaximumPosition;
+        }
+
+        void Update()
+        {
+            FourchesPosUI = Mathf.InverseLerp(minFourchesPosGo, maxFourchesPosGo, fourches.transform.localPosition.y);
+            
+
+            fourchesUI.rectTransform.localPosition = new Vector3(posFourchesUIStart.x, Mathf.Lerp(minFourchesPosUI, maxFourchesPosUI, FourchesPosUI), posFourchesUIStart.z);
+        }
+    }
 }

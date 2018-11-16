@@ -6,25 +6,30 @@ namespace GRP16.JandB
 {
     public class PoolManager : MonoBehaviour
     {
-
-
         public Transform t1;
         public Transform t2;
         public Transform transpalette;
 
         public GameObject[] chunks;
 
+        public List<GameObject> chunksList;
+
         public float tailleChunk;
 
         GameObject n1;
         GameObject n2;
-        // Use this for initialization
+
         void Start()
         {
+            chunksList = new List<GameObject>();
 
+            for (int i = 0; i < chunks.Length - 1; i++)
+            {
+                chunksList.Add(chunks[i]);
+            }
+            tailleChunk = t2.transform.position.z - t1.transform.position.z;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (transpalette.position.z > t1.position.z)
@@ -44,21 +49,13 @@ namespace GRP16.JandB
 
         public void PoolObjects(Vector3 pos)
         {
-            var randomChunk = Random.Range(0, chunks.Length - 1);
+            var randomChunk = Random.Range(0, chunksList.Count - 1);
 
-            if (chunks[randomChunk] != n1)
-            {
-                n1 = n2;
-                n2 = chunks[randomChunk];
-                n2.transform.position = pos;
-                Debug.Log(n1.transform.position + " et " + n2.transform.position);
-            }
+            n1 = n2;
 
-            else
-            {
-                PoolObjects(pos);
-            }
-
+            n2 = chunksList[randomChunk];
+            n2.transform.position = pos;
+            chunksList.Remove(chunksList[randomChunk]);
 
         }
 

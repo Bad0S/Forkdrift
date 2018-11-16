@@ -47,7 +47,6 @@ namespace GRP16.JandB
             {
                 UpdatePalette();
             }
-            Debug.Log(Mathf.Sign(Input.GetAxis("Mouse X")));
 
             Move();
             
