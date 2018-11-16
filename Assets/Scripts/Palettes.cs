@@ -18,10 +18,11 @@ namespace GRP16.JandB
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Wall")
+            if (collision.gameObject.GetComponent<IWall>() != null)
             {
                 GetComponentInParent<Transpalette>().speed = 0f;
                 Debug.Log("AlloLose");
+                collision.gameObject.GetComponent<IWall>().Touched();
             }
         }
     }
