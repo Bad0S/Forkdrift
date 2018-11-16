@@ -7,6 +7,7 @@ namespace GRP16.JandB
 {
     public class FourchesUIScript : MonoBehaviour
     {
+        [Header("Liens à faire")]
         public GameObject fourches;
         public Image fourchesUI;
         public Image verticalBarUI;

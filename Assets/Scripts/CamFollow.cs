@@ -9,7 +9,7 @@ namespace GRP16.JandB
         public Transform target;
 
         Vector3 offset;
-        // Use this for initialization
+
         void Start()
         {
             offset = target.position + transform.position;

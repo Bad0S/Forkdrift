@@ -7,6 +7,7 @@ namespace GRP16.JandB
 {
     public class TimerScript : MonoBehaviour
     {
+        [Header("Liens à faire")]
         public TMPro.TextMeshProUGUI timerText;
         public float timer;
 
@@ -23,7 +24,7 @@ namespace GRP16.JandB
             }
             if (timer <= 0)
             {
-                Debug.Log("C'est fini");
+
             }
             timerText.text = Mathf.CeilToInt(timer).ToString();
         }
