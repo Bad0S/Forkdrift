@@ -14,7 +14,7 @@ namespace GRP16.JandB
     {
         public void Touched(Transpalette palette)
         {
-            palette.speed = 0f;
+            palette.Crash();
         }
     }
 

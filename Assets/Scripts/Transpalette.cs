@@ -54,11 +54,13 @@ namespace GRP16.JandB
         [Space(10)]
         [Header("Links à faire")]
         public AudioSource driftSource;
+        public MeshCollider[] transpaletteMeshColliders;
         public GameObject palettes;
         public ParticleSystem leftWheelParticles;
         public ParticleSystem rightWheelParticles;
 
         bool isDrifting;
+        bool isAlive;
 
         float transpaletteMinimumRotation;
         float transpaletteMinimumTilt;
@@ -80,6 +82,7 @@ namespace GRP16.JandB
 
         private void Start()
         {
+            isAlive = true;
             driftSource.pitch = driftSource.clip.length / (driftSource.pitch * timeBeforeDriftingOut);
             Debug.Log(driftSource.pitch);
             Cursor.lockState = CursorLockMode.Confined;
@@ -97,25 +100,30 @@ namespace GRP16.JandB
 
         private void Update()
         {
-            zAngle = transform.localEulerAngles.z;
-            zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
-            xOffset = -zAngle/xFactor;
+            if (isAlive)
+            {
+                zAngle = transform.localEulerAngles.z;
+                zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
+                xOffset = -zAngle / xFactor;
+            }
         }
 
         void FixedUpdate()
         {
-            if (Mathf.Abs(Input.GetAxis("Mouse X")) > inputDetectionThreshold)
+            if (isAlive)
             {
-                Turn();
-            }
+                if (Mathf.Abs(Input.GetAxis("Mouse X")) > inputDetectionThreshold)
+                {
+                    Turn();
+                }
 
-            if (Mathf.Abs(Input.GetAxis("Mouse Y")) > inputDetectionThreshold)
-            {
-                UpdatePalette();
-            }
+                if (Mathf.Abs(Input.GetAxis("Mouse Y")) > inputDetectionThreshold)
+                {
+                    UpdatePalette();
+                }
 
-            Move();
-            
+                Move();
+            }
         }
 
         public void Turn()
@@ -224,6 +232,17 @@ namespace GRP16.JandB
             {
                 collision.gameObject.GetComponent<IWall>().Touched(this);
             }
+        }
+
+        public void Crash()
+        {
+            foreach(MeshCollider meshCo in transpaletteMeshColliders)
+            {
+                meshCo.enabled = true;
+            }
+            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            isAlive = false;
         }
     }
 }
