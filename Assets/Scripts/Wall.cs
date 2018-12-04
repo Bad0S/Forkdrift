@@ -7,14 +7,14 @@ namespace GRP16.JandB
 {
     public interface IWall
     {
-        void Touched();
+        void Touched(Transpalette palette);
     }
 
     public class Wall : MonoBehaviour, IWall
     {
-        public void Touched()
+        public void Touched(Transpalette palette)
         {
-            Debug.Log("Oreuh");
+            palette.speed = 0f;
         }
     }
 

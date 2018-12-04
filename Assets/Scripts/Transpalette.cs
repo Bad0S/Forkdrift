@@ -45,13 +45,20 @@ namespace GRP16.JandB
         public float transpaletteMaximumRotation;
         [Tooltip("Tilt maximal du transpalette")]
         public float transpaletteMaximumTilt;
+        [Tooltip("Tremblement maximal du drift")]
+        public float transpaletteMaxShakeDuringDrift;
+        [Tooltip("Vitesse maximale du tremblement")]
+        public float transpaletteMaxSpeedDuringDrift;
 
 
         [Space(10)]
         [Header("Links à faire")]
+        public AudioSource driftSource;
         public GameObject palettes;
         public ParticleSystem leftWheelParticles;
         public ParticleSystem rightWheelParticles;
+
+        bool isDrifting;
 
         float transpaletteMinimumRotation;
         float transpaletteMinimumTilt;
@@ -63,6 +70,8 @@ namespace GRP16.JandB
         float xFactor;
         float zAngle;
 
+        Quaternion actualRotation;
+
         ParticleSystem.EmissionModule leftWheelEmission;
         ParticleSystem.TrailModule leftWheelTrails;
         ParticleSystem.EmissionModule rightWheelEmission;
@@ -71,6 +80,8 @@ namespace GRP16.JandB
 
         private void Start()
         {
+            driftSource.pitch = driftSource.clip.length / (driftSource.pitch * timeBeforeDriftingOut);
+            Debug.Log(driftSource.pitch);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             xFactor = transpaletteMaximumRotation / transpaletteMaximumTilt;
@@ -81,6 +92,7 @@ namespace GRP16.JandB
             leftWheelTrails = leftWheelParticles.trails;
             rightWheelEmission = rightWheelParticles.emission;
             rightWheelTrails = rightWheelParticles.trails;
+            transpaletteMaxShakeDuringDrift /= timeBeforeDriftingOut;
         }
 
         private void Update()
@@ -129,30 +141,34 @@ namespace GRP16.JandB
         {
             transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0,transform.position.z + speed);
 
-            if (transform.position.x >= maximumX || transform.position.x <= -maximumX)
+            if (transform.position.x >= maximumX || transform.position.x <= -maximumX && isDrifting)
             {
                 Drift();
             }
 
-            else
+            else if (transform.position.x >= maximumX || transform.position.x <= -maximumX && !isDrifting)
             {
-                timeDrifting = 0;
-                rightWheelEmission.rateOverTime = 0;
-                leftWheelEmission.rateOverTime = 0;
-                if (rightWheelParticles.particleCount == 0)
-                {
-                    rightWheelTrails.colorOverTrail = particlesGradient.Evaluate(0);
-                }
-
-                if (leftWheelParticles.particleCount == 0)
-                {
-                    leftWheelTrails.colorOverTrail = particlesGradient.Evaluate(0);
-                }
+                StartDrift();
             }
-        } 
+
+            else if (isDrifting)
+            {
+                StopDrifting();
+            }
+        }
+
+        #region GestionDrift
+
+        public void StartDrift()
+        {
+            isDrifting = true;
+            driftSource.Play();
+        }
+
 
         public void Drift()
         {
+
             timeDrifting += Time.deltaTime;
             if (timeDrifting >= timeBeforeDriftingOut)
             {
@@ -170,15 +186,44 @@ namespace GRP16.JandB
                 leftWheelEmission.rateOverTime = particlesAC.Evaluate((Mathf.InverseLerp(0, timeBeforeDriftingOut, timeDrifting)))* particlesMultiplier * -xOffset;
                 leftWheelTrails.colorOverTrail = particlesGradient.Evaluate((Mathf.InverseLerp(0, timeBeforeDriftingOut, timeDrifting)));
             }
-            
+
+            actualRotation = transform.rotation;
+            transform.localRotation = Quaternion.Euler(0, Mathf.Sin(Time.time * transpaletteMaxSpeedDuringDrift) * timeDrifting * transpaletteMaxShakeDuringDrift, 0) * actualRotation;
+            driftSource.volume = Mathf.Pow(timeDrifting,2) / Mathf.Pow(timeBeforeDriftingOut,2);
+
         }
+
+        public void StopDrifting()
+        {
+            driftSource.Stop();
+            timeDrifting = 0;
+            rightWheelEmission.rateOverTime = 0;
+            leftWheelEmission.rateOverTime = 0;
+            if (rightWheelParticles.particleCount == 0)
+            {
+                rightWheelTrails.colorOverTrail = particlesGradient.Evaluate(0);
+            }
+
+            if (leftWheelParticles.particleCount == 0)
+            {
+                leftWheelTrails.colorOverTrail = particlesGradient.Evaluate(0);
+            }
+
+            if (transform.eulerAngles.y != 0)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+            }
+
+            isDrifting = false;            
+        }
+
+        #endregion
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.name.Contains("Wall"))
+            if (collision.gameObject.GetComponent<IWall>() != null)
             {
-                speed = 0f;
-                Debug.Log("Loose !");
+                collision.gameObject.GetComponent<IWall>().Touched(this);
             }
         }
     }
