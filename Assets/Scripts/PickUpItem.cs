@@ -17,10 +17,10 @@ namespace GRP16.JandB
             }
         }
 
-        public void Touched(Transpalette palettes)
+        public void Touched(Transpalette transpalette)
         {
-            transform.SetParent(palettes.gameObject.transform);
-            palettesTrans = palettes.palettes.transform;
+            transform.SetParent(transpalette.gameObject.transform);
+            palettesTrans = transpalette.palettes.transform;
             transform.rotation = Quaternion.identity;
             transform.localScale = Vector3.one;
             pickedUp = true;
