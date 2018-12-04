@@ -12,7 +12,7 @@ namespace GRP16.JandB
             {
                 GetComponentInParent<Transpalette>().speed = 0f;
                 Debug.Log("AlloLose");
-                collision.gameObject.GetComponent<IWall>().Touched();
+                collision.gameObject.GetComponent<IWall>().Touched(GetComponentInParent<Transpalette>());
             }
         }
     }

@@ -141,12 +141,12 @@ namespace GRP16.JandB
         {
             transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0,transform.position.z + speed);
 
-            if (transform.position.x >= maximumX || transform.position.x <= -maximumX && isDrifting)
+            if (transform.position.x >= maximumX && isDrifting || transform.position.x <= -maximumX && isDrifting)
             {
                 Drift();
             }
 
-            else if (transform.position.x >= maximumX || transform.position.x <= -maximumX && !isDrifting)
+            else if (transform.position.x >= maximumX && !isDrifting || transform.position.x <= -maximumX && !isDrifting)
             {
                 StartDrift();
             }
@@ -161,6 +161,8 @@ namespace GRP16.JandB
 
         public void StartDrift()
         {
+            Debug.Log("StartDrift");
+            StopDrifting();
             isDrifting = true;
             driftSource.Play();
         }
@@ -195,6 +197,8 @@ namespace GRP16.JandB
 
         public void StopDrifting()
         {
+            isDrifting = false;            
+
             driftSource.Stop();
             timeDrifting = 0;
             rightWheelEmission.rateOverTime = 0;
@@ -209,12 +213,7 @@ namespace GRP16.JandB
                 leftWheelTrails.colorOverTrail = particlesGradient.Evaluate(0);
             }
 
-            if (transform.eulerAngles.y != 0)
-            {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
-            }
-
-            isDrifting = false;            
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
         }
 
         #endregion
