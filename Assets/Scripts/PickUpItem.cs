@@ -1,29 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GRP16.JandB
 {
     public class PickUpItem : MonoBehaviour, IWall
     {
-        public bool pickedUp;
-        public Transform palettesTrans;
+        public Transform pickupHeight;
+        public FourchesUIScript ui;
 
-        public void Update()
+        Vector3 pickupPos;
+        public void Start()
         {
-            if (pickedUp)
-            {
-                transform.position = new Vector3(transform.position.x, palettesTrans.position.y + (palettesTrans.localScale.y * 0.53f), transform.position.z);
-            }
+
         }
 
         public void Touched(Transpalette transpalette)
         {
-            transform.SetParent(transpalette.gameObject.transform);
-            palettesTrans = transpalette.palettes.transform;
-            transform.rotation = Quaternion.identity;
-            transform.localScale = Vector3.one;
-            pickedUp = true;
+        }
+
+
+
+        public void UnpoolPickup()
+        {
+            Debug.Log("C'est good");
+        }
+
+        public void PoolPickup()
+        {
+            pickupPos = new Vector3(pickupHeight.position.x, (pickupHeight.localPosition.y * transform.localScale.y + transform.position.y) , pickupHeight.position.z);
+            ui.DrawPickUpUI(pickupPos, this);
+
         }
     }
 }

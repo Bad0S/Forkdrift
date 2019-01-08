@@ -11,22 +11,33 @@ namespace GRP16.JandB
         public TMPro.TextMeshProUGUI timerText;
         public float timer;
 
+        public bool timerStart;
         void Start()
         {
-
+            timerStart = false;
+            timerText.enabled = false;
         }
 
         void Update()
         {
-            if (timer > 0)
+            if (timerStart)
             {
-                timer -= Time.deltaTime;
-            }
-            if (timer <= 0)
-            {
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                }
+                if (timer <= 0)
+                {
 
+                }
+                timerText.text = Mathf.CeilToInt(timer).ToString();
             }
-            timerText.text = Mathf.CeilToInt(timer).ToString();
+        }
+
+        public void StartTimer()
+        {
+            timerText.enabled = true;
+            timerStart = true;
         }
     }
 }
