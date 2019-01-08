@@ -5,22 +5,17 @@ using UnityEngine.UI;
 
 namespace GRP16.JandB
 {
-    public class PickUpItem : MonoBehaviour, IWall
+    public class PickUpItem : MonoBehaviour
     {
         public Transform pickupHeight;
         public FourchesUIScript ui;
 
         Vector3 pickupPos;
+
         public void Start()
         {
 
         }
-
-        public void Touched(Transpalette transpalette)
-        {
-        }
-
-
 
         public void UnpoolPickup()
         {

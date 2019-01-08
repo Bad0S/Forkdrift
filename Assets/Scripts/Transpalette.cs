@@ -182,7 +182,7 @@ namespace GRP16.JandB
             timeDrifting += Time.deltaTime;
             if (timeDrifting >= timeBeforeDriftingOut)
             {
-                Debug.Log("Et c'est un out");
+                Crash();
             }
 
             if (xOffset > 0)

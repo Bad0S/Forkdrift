@@ -48,9 +48,15 @@ namespace GRP16.JandB
             if (pickup)
             {
                 if (fourchesUI.rectTransform.localPosition.y > pickupUI.rectTransform.localPosition.y)
+                {
                     pickupUI.color = new Color(notPickable.r, notPickable.g, notPickable.b, fourches.transform.position.z / pickupPos.z);
+                    Debug.Log(fourches.transform.position.z / pickupPos.z);
+                }
                 else
+                {
                     pickupUI.color = new Color(pickable.r, pickable.g, pickable.b, fourches.transform.position.z / pickupPos.z);
+                    Debug.Log(fourches.transform.position.z / pickupPos.z);
+                }
 
                 if (pickupPos.z <= fourches.transform.position.z && fourchesUI.rectTransform.localPosition.y > pickupUI.rectTransform.localPosition.y)
                 {
@@ -63,7 +69,6 @@ namespace GRP16.JandB
 
         public void DrawPickUpUI(Vector3 pickupHeight, PickUpItem itemToPick)
         {
-            Debug.Log("Draw");
             itemPicked = itemToPick;
             pickupUI.enabled = true;
             pickupPos = pickupHeight;

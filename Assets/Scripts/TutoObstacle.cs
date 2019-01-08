@@ -21,6 +21,7 @@ namespace GRP16.JandB
             if (collision.gameObject.GetComponent<Transpalette>() != null)
             {
                 col.enabled = false;
+                rb.AddForce(Vector3.one * Random.Range(20f, 100f));
             }
         }
     }
