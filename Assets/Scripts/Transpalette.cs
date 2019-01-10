@@ -152,7 +152,7 @@ namespace GRP16.JandB
 
         public void Move()
         {
-            transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0,transform.position.z + speed);
+            transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0 ,transform.position.z + speed);
 
             if (transform.position.x >= maximumX && isDrifting || transform.position.x <= -maximumX && isDrifting)
             {
