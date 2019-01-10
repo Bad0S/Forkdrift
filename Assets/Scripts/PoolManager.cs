@@ -8,6 +8,7 @@ namespace GRP16.JandB
     {
         [Header("Variables Debug")]
         public bool spawn;
+        public float tailleChunk;
 
         [Header("Liens à faire")]
         public Transform t1;
@@ -18,7 +19,6 @@ namespace GRP16.JandB
 
         [Space(20)]
         public List<GameObject> chunksList;
-        float tailleChunk;
 
         GameObject n2;
 
@@ -31,7 +31,6 @@ namespace GRP16.JandB
                 chunksList.Add(chunks[i]);
             }
 
-            tailleChunk = t2.transform.position.z - t1.transform.position.z;
         }
 
         void Update()

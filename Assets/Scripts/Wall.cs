@@ -15,6 +15,8 @@ namespace GRP16.JandB
         public void Touched(Transpalette palette)
         {
             palette.Crash();
+            GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-20, 20), Random.Range(-0, 20), Random.Range(-20, 20)));
         }
     }
 

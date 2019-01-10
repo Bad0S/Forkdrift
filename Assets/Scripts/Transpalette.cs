@@ -7,6 +7,8 @@ namespace GRP16.JandB
     public class Transpalette : MonoBehaviour
     {
         #region variables
+        [Header("Variables difficulté")]
+
         [Header("Valeurs à tweak GD/Gfeel")]
         [Header("Vitesses")]
         [Tooltip("Vitesse d'avancée du transpalette")]
@@ -248,6 +250,8 @@ namespace GRP16.JandB
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             isAlive = false;
+            rightWheelParticles.Stop();
+            leftWheelParticles.Stop();
             Time.timeScale = .6f;
         }
     }
