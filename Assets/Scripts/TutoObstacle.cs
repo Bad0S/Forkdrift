@@ -8,6 +8,7 @@ namespace GRP16.JandB
     {
         Rigidbody rb;
         BoxCollider col;
+        public TimerScript timer;
 
         public float explosionForce;
         void Start()
@@ -22,6 +23,10 @@ namespace GRP16.JandB
             {
                 col.enabled = false;
                 rb.AddForce(Vector3.one * Random.Range(20f, 100f));
+                if (timer.timerStart == false)
+                {
+                    timer.StartTimer();
+                }
             }
         }
     }

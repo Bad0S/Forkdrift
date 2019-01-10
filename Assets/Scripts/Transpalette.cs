@@ -54,6 +54,8 @@ namespace GRP16.JandB
         [Space(10)]
         [Header("Links à faire")]
         public AudioSource driftSource;
+        public AudioSource explosionSource;
+        public AudioSource moteurSource;
         public MeshCollider[] transpaletteMeshColliders;
         public GameObject palettes;
         public ParticleSystem leftWheelParticles;
@@ -82,6 +84,7 @@ namespace GRP16.JandB
 
         private void Start()
         {
+            moteurSource.Play();
             isAlive = true;
             driftSource.pitch = driftSource.clip.length / (driftSource.pitch * timeBeforeDriftingOut);
             Debug.Log(driftSource.pitch);
@@ -240,9 +243,12 @@ namespace GRP16.JandB
             {
                 meshCo.enabled = true;
             }
+            explosionSource.Play();
+            moteurSource.Stop();
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             isAlive = false;
+            Time.timeScale = .6f;
         }
     }
 }
