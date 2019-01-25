@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateLights : MonoBehaviour {
+namespace GRP16.JandB
+{
+    public class RotateLights : MonoBehaviour
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        transform.Rotate(0, Time.deltaTime * 200, 0);
-	}
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.Rotate(0, Time.deltaTime * 200, 0);
+        }
+    }
 }

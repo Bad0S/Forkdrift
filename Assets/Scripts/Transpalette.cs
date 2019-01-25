@@ -175,7 +175,7 @@ namespace GRP16.JandB
         public void StartDrift()
         {
             Debug.Log("StartDrift");
-            StopDrifting();
+            //StopDrifting();
             isDrifting = true;
             driftSource.Play();
         }

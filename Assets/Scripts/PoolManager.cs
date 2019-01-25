@@ -39,11 +39,12 @@ namespace GRP16.JandB
             {
                 if (transpalette.position.z > t1.position.z)
                 {
+                    Debug.Log("Oskour");
                     t1.position += new Vector3(0, 0, tailleChunk*2);
                     PoolObjects(t1.position);
                 }
 
-                else if (transpalette.position.z > t2.position.z)
+                if (transpalette.position.z > t2.position.z)
                 {
                     t2.position += new Vector3(0, 0, tailleChunk*2);
                     PoolObjects(t2.position);
