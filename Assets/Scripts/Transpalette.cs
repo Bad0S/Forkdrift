@@ -17,6 +17,7 @@ namespace GRP16.JandB
         public float turningSpeed;
         [Tooltip("Vitesse à laquelle les palettes se déplacent")]
         public float paletteSpeed;
+        public AnimationCurve speedAugment;
         [Header("Gamefeel variables")]
         [Tooltip("La fonction selon laquelle les particules vont spawn")]
         public AnimationCurve particlesAC;
@@ -152,7 +153,7 @@ namespace GRP16.JandB
 
         public void Move()
         {
-            transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0 ,transform.position.z + speed);
+            transform.position = new Vector3(Mathf.Clamp(xOffset, transpaletteMinimumTilt, transpaletteMaximumTilt), 0 ,transform.position.z + speed * speedAugment.Evaluate(Time.time));
 
             if (transform.position.x >= maximumX && isDrifting || transform.position.x <= -maximumX && isDrifting)
             {
