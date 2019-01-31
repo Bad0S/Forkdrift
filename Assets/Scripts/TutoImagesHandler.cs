@@ -26,7 +26,7 @@ namespace GRP16.JandB
 
         public void SecondTutoStart()
         {
-            Time.timeScale = 0f;
+            Time.timeScale = .2f;
             GetComponent<Animator>().SetBool("part2", true);
         }
 
