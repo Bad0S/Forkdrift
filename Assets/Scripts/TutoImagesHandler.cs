@@ -6,7 +6,7 @@ namespace GRP16.JandB
 {
     public class TutoImagesHandler : MonoBehaviour
     {
-
+        public PickUpItem tutoPickup;
         // Use this for initialization
         void Start()
         {
@@ -26,8 +26,9 @@ namespace GRP16.JandB
 
         public void SecondTutoStart()
         {
-            Time.timeScale = .2f;
+            Time.timeScale = 0f;
             GetComponent<Animator>().SetBool("part2", true);
+            tutoPickup.PoolPickup();
         }
 
         public void StartGame()

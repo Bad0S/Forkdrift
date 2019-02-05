@@ -15,7 +15,7 @@ namespace GRP16.JandB
         public AudioSource sonnerieDeclenchementSource;
         public AudioClip sonnerieDeclenchementClip;
         public bool timerStart;
-
+        public PoolManager poolManager;
         void Start()
         {
             timerStart = false;
@@ -29,12 +29,15 @@ namespace GRP16.JandB
                 if (timer > 0)
                 {
                     timer -= Time.deltaTime;
+                    timerText.text = Mathf.CeilToInt(timer).ToString();
                 }
+
                 if (timer <= 0)
                 {
                     Debug.Log("You won !");
+                    timerText.text = "WIN !";
+                    poolManager.spawn = false;
                 }
-                timerText.text = Mathf.CeilToInt(timer).ToString();
             }
         }
 

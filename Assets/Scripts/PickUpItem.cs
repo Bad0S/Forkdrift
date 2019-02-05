@@ -20,6 +20,7 @@ namespace GRP16.JandB
         public void UnpoolPickup()
         {
             Debug.Log("C'est good");
+            Destroy(gameObject);
         }
 
         public void PoolPickup()

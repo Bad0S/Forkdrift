@@ -23,6 +23,10 @@ namespace GRP16.JandB
             {
                 col.enabled = false;
                 rb.AddForce(Vector3.one * Random.Range(20f, 100f));
+                if (collision.gameObject.GetComponent<Transpalette>().enabled == false)
+                {
+                    collision.gameObject.GetComponent<Transpalette>().enabled = true;
+                }
                 if (timer.timerStart == false)
                 {
                     timer.StartTimer();

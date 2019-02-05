@@ -58,7 +58,7 @@ namespace GRP16.JandB
         {
             var randomChunk = Random.Range(0, chunksList.Count - 1);
             n2 = chunksList[randomChunk];
-            if (n2.GetComponent<PickUpItem>() != null)
+            if (n2.GetComponentInChildren<PickUpItem>() != null)
             {
                 if(fourchesUI.pickup)
                 {
@@ -69,7 +69,7 @@ namespace GRP16.JandB
                 else
                 {
                     n2.transform.position = pos;
-                    n2.GetComponent<PickUpItem>().PoolPickup();
+                    n2.GetComponentInChildren<PickUpItem>().PoolPickup();
                     chunksList.Remove(chunksList[randomChunk]);
                     return;
                 }

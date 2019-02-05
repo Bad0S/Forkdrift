@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GRP16.JandB
 {
@@ -112,6 +113,12 @@ namespace GRP16.JandB
                 zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
                 xOffset = -zAngle / xFactor;
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
         }
 
         void FixedUpdate()
@@ -175,8 +182,6 @@ namespace GRP16.JandB
 
         public void StartDrift()
         {
-            Debug.Log("StartDrift");
-            //StopDrifting();
             isDrifting = true;
             driftSource.Play();
         }
@@ -186,10 +191,6 @@ namespace GRP16.JandB
         {
 
             timeDrifting += Time.deltaTime;
-            if (timeDrifting >= timeBeforeDriftingOut)
-            {
-                Crash();
-            }
 
             if (xOffset > 0)
             {
