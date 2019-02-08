@@ -14,6 +14,7 @@ namespace GRP16.JandB
         public Image pickupUI;
         public Color pickable;
         public Color notPickable;
+        public Image warningSign;
 
         #region privateVariables
         Vector3 posFourchesUIStart;
@@ -50,10 +51,12 @@ namespace GRP16.JandB
                 if (fourchesUI.rectTransform.localPosition.y > pickupUI.rectTransform.localPosition.y)
                 {
                     pickupUI.color = new Color(notPickable.r, notPickable.g, notPickable.b, fourches.transform.position.z / pickupPos.z);
+                    warningSign.enabled = true;
                 }
                 else
                 {
                     pickupUI.color = new Color(pickable.r, pickable.g, pickable.b, fourches.transform.position.z / pickupPos.z);
+                    warningSign.enabled = false;
                 }
 
                 if (pickupPos.z <= fourches.transform.position.z && fourchesUI.rectTransform.localPosition.y > pickupUI.rectTransform.localPosition.y)
