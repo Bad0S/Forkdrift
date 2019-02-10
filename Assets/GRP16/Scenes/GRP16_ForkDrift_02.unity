@@ -6614,7 +6614,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 545643317}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9592,6 +9592,14 @@ Prefab:
       propertyPath: ui
       value: 
       objectReference: {fileID: 2096254807}
+    - target: {fileID: 1473405607276502, guid: bc8a85bd4e223da42a574b08a11d67e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934682023150646, guid: bc8a85bd4e223da42a574b08a11d67e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8a85bd4e223da42a574b08a11d67e4, type: 2}
   m_IsPrefabAsset: 0
@@ -16664,12 +16672,12 @@ Prefab:
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
@@ -22382,6 +22390,10 @@ Prefab:
       propertyPath: ui
       value: 
       objectReference: {fileID: 2096254807}
+    - target: {fileID: 4606825465393356, guid: 4621be009b2483941b929f17cf6225fc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4621be009b2483941b929f17cf6225fc, type: 2}
   m_IsPrefabAsset: 0
@@ -27497,7 +27509,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1455128095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
