@@ -19,6 +19,7 @@ namespace GRP16.JandB
         public Transpalette transpalette;
         public AudioSource musicSource;
         public AudioClip victoryClip;
+        public Image timerDescendImage;
         bool hasWon;
 
         void Start()
@@ -34,6 +35,7 @@ namespace GRP16.JandB
                 if (timer > 0)
                 {
                     timer -= Time.deltaTime;
+                    timerDescendImage.fillAmount = timer / 20f;
                     timerText.text = Mathf.CeilToInt(timer).ToString();
                 }
 

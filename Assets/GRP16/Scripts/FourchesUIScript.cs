@@ -16,6 +16,7 @@ namespace GRP16.JandB
         public Color notPickable;
         public Image warningSign;
         public PickUpItem tutoPickupItem;
+        public GameObject poofParticles;
         public AudioSource poofSource;
 
         #region privateVariables
@@ -97,6 +98,7 @@ namespace GRP16.JandB
             pickupUI.enabled = false;
             poofSource.Play();
             pickup = false;
+            Instantiate(poofParticles, itemPicked.transform.position, Quaternion.identity);
             itemPicked.UnpoolPickup();
             itemPicked = null;
         }
