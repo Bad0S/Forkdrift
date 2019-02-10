@@ -80,6 +80,8 @@ namespace GRP16.JandB
         float xFactor;
         float zAngle;
 
+        public int difficulty;
+
         Quaternion actualRotation;
 
         ParticleSystem.EmissionModule leftWheelEmission;
@@ -92,6 +94,16 @@ namespace GRP16.JandB
 
         private void Start()
         {
+            if (PlayerPrefs.GetInt("Difficulty") != 0)
+            {
+                difficulty = PlayerPrefs.GetInt("Difficulty");
+            }
+
+            else
+            {
+                PlayerPrefs.SetInt("Difficulty", 1);
+                difficulty = 1;
+            }
             moteurSource.Play();
             isAlive = true;
             driftSource.pitch = driftSource.clip.length / (driftSource.pitch * timeBeforeDriftingOut);
@@ -285,6 +297,15 @@ namespace GRP16.JandB
             Time.timeScale = 1f;
 #if SIGWARE
       LevelManager.Instance.Lose();
+#endif
+
+#if !SIGWARE
+            if (difficulty > 1)
+            {
+                difficulty--;
+                PlayerPrefs.SetInt("Difficulty", difficulty);
+            }
+        SceneManager.LoadScene("GRP16_ForkDrift_0" + difficulty);
 #endif
         }
     }

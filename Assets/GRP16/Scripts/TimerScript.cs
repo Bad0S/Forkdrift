@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace GRP16.JandB
 {
@@ -68,6 +69,15 @@ namespace GRP16.JandB
             Time.timeScale = 1f;
 #if SIGWARE
 	LevelManager.Instance.Win();
+#endif
+
+#if !SIGWARE
+            if (transpalette.difficulty < 3)
+            {
+                transpalette.difficulty++;
+                PlayerPrefs.SetInt("Difficulty", transpalette.difficulty);
+            }
+            SceneManager.LoadScene("GRP16_ForkDrift_0" + transpalette.difficulty);
 #endif
         }
 
