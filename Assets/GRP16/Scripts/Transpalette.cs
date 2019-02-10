@@ -285,7 +285,7 @@ namespace GRP16.JandB
         public IEnumerator Loose()
         {
             timer.timerStart = false;
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(loseSound.length);
             Time.timeScale = 1f;
 #if SIGWARE
       LevelManager.Instance.Lose();

@@ -20,6 +20,7 @@ namespace GRP16.JandB
         public AudioSource musicSource;
         public AudioClip victoryClip;
         public Image timerDescendImage;
+        public GameObject VictoryImage;
         bool hasWon;
 
         void Start()
@@ -55,7 +56,8 @@ namespace GRP16.JandB
         {
             musicSource.Stop();
             musicSource.PlayOneShot(victoryClip);
-            yield return new WaitForSecondsRealtime(3f);
+            VictoryImage.SetActive(true);
+            yield return new WaitForSecondsRealtime(victoryClip.length);
             Time.timeScale = 1f;
 #if SIGWARE
 	LevelManager.Instance.Win();
