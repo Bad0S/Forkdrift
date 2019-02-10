@@ -16,6 +16,7 @@ namespace GRP16.JandB
         public Color notPickable;
         public Image warningSign;
         public PickUpItem tutoPickupItem;
+        public AudioSource poofSource;
 
         #region privateVariables
         Vector3 posFourchesUIStart;
@@ -94,6 +95,7 @@ namespace GRP16.JandB
         public void StopPickUpUI()
         {
             pickupUI.enabled = false;
+            poofSource.Play();
             pickup = false;
             itemPicked.UnpoolPickup();
             itemPicked = null;
