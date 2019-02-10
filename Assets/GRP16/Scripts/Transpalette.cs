@@ -260,24 +260,24 @@ namespace GRP16.JandB
 
         public void Crash()
         {
-            foreach(MeshCollider meshCo in transpaletteMeshColliders)
-            {
-                meshCo.enabled = true;
-            }
-            explosionSource.Play();
-            moteurSource.Stop();
-            musicSource.Stop();
-            musicSource.PlayOneShot(loseSound);
-            GetComponent<BoxCollider>().enabled = false;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            isAlive = false;
-            rightWheelParticles.Stop();
-            leftWheelParticles.Stop();
-            Time.timeScale = .6f;
 
             if (!hasLost)
             {
                 hasLost = true;
+                foreach(MeshCollider meshCo in transpaletteMeshColliders)
+                {
+                    meshCo.enabled = true;
+                }
+                explosionSource.Play();
+                moteurSource.Stop();
+                musicSource.Stop();
+                musicSource.PlayOneShot(loseSound);
+                GetComponent<BoxCollider>().enabled = false;
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                isAlive = false;
+                rightWheelParticles.Stop();
+                leftWheelParticles.Stop();
+                Time.timeScale = .6f;
                 StartCoroutine(Loose());
             }
         }
@@ -286,6 +286,8 @@ namespace GRP16.JandB
         {
             timer.timerStart = false;
             yield return new WaitForSecondsRealtime(loseSound.length);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 1f;
 #if SIGWARE
       LevelManager.Instance.Lose();

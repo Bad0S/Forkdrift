@@ -63,6 +63,8 @@ namespace GRP16.JandB
             musicSource.PlayOneShot(victoryClip);
             VictoryImage.SetActive(true);
             yield return new WaitForSecondsRealtime(victoryClip.length);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 1f;
 #if SIGWARE
 	LevelManager.Instance.Win();

@@ -77,7 +77,7 @@ namespace GRP16.JandB
                     else
                     {
                         fourches.GetComponentInParent<Transpalette>().Crash();
-                    pickup = false;
+                        pickup = false;
                     }
                 }
             }
