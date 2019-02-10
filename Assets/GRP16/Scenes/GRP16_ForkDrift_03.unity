@@ -8173,12 +8173,12 @@ Prefab:
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 224302502788997966, guid: f59df3832bf548a4e9d77dca0367a42f,
         type: 2}
@@ -8212,7 +8212,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1296417946596534, guid: f59df3832bf548a4e9d77dca0367a42f, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59df3832bf548a4e9d77dca0367a42f, type: 2}
