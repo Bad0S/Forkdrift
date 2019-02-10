@@ -40175,6 +40175,12 @@ MonoBehaviour:
   victoryClip: {fileID: 8300000, guid: 16f990ee75c273d45ad65c4f0e433339, type: 3}
   timerDescendImage: {fileID: 1585710764}
   VictoryImage: {fileID: 27085913}
+  sourcesToStopWhenWin:
+  - {fileID: 1635928376}
+  - {fileID: 390945628}
+  - {fileID: 208819669}
+  - {fileID: 2132438375}
+  - {fileID: 1955768245}
 --- !u!4 &2096254809
 Transform:
   m_ObjectHideFlags: 0

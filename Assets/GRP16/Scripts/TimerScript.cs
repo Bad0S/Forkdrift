@@ -23,6 +23,8 @@ namespace GRP16.JandB
         public GameObject VictoryImage;
         bool hasWon;
 
+        public AudioSource[] sourcesToStopWhenWin;
+
         void Start()
         {
             timerStart = false;
@@ -54,7 +56,10 @@ namespace GRP16.JandB
 
         public IEnumerator Win()
         {
-            musicSource.Stop();
+            for (int i = 0; i < sourcesToStopWhenWin.Length; i++)
+            {
+                sourcesToStopWhenWin[i].Stop();
+            }
             musicSource.PlayOneShot(victoryClip);
             VictoryImage.SetActive(true);
             yield return new WaitForSecondsRealtime(victoryClip.length);
