@@ -116,12 +116,6 @@ namespace GRP16.JandB
                 zAngle = (zAngle > 180) ? zAngle - 360 : zAngle;
                 xOffset = -zAngle / xFactor;
             }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-
         }
 
         void FixedUpdate()
