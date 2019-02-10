@@ -4,12 +4,96 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: canister
+    100004: Forks_Forklift
+    100006: iron
+    100008: obdy
+    100010: Object001
+    100012: Object002
+    100014: Object003
+    100016: Object004
+    100018: Object005
+    100020: Object006
+    100022: Object007
+    100024: Object008
+    100026: Object009
+    100028: Object010
+    100030: Object011
+    100032: Object012
     400000: //RootNode
+    400002: canister
+    400004: Forks_Forklift
+    400006: iron
+    400008: obdy
+    400010: Object001
+    400012: Object002
+    400014: Object003
+    400016: Object004
+    400018: Object005
+    400020: Object006
+    400022: Object007
+    400024: Object008
+    400026: Object009
+    400028: Object010
+    400030: Object011
+    400032: Object012
     2100000: 'Material #4'
     2300000: //RootNode
+    2300002: canister
+    2300004: Forks_Forklift
+    2300006: iron
+    2300008: obdy
+    2300010: Object001
+    2300012: Object002
+    2300014: Object003
+    2300016: Object004
+    2300018: Object005
+    2300020: Object006
+    2300022: Object007
+    2300024: Object008
+    2300026: Object009
+    2300028: Object010
+    2300030: Object011
+    2300032: Object012
     3300000: //RootNode
+    3300002: canister
+    3300004: Forks_Forklift
+    3300006: iron
+    3300008: obdy
+    3300010: Object001
+    3300012: Object002
+    3300014: Object003
+    3300016: Object004
+    3300018: Object005
+    3300020: Object006
+    3300022: Object007
+    3300024: Object008
+    3300026: Object009
+    3300028: Object010
+    3300030: Object011
+    3300032: Object012
     4300000: Forks_Forklift
-  externalObjects: {}
+    4300002: obdy
+    4300004: canister
+    4300006: iron
+    4300008: Object001
+    4300010: Object002
+    4300012: Object003
+    4300014: Object004
+    4300016: Object005
+    4300018: Object006
+    4300020: Object007
+    4300022: Object008
+    4300024: Object009
+    4300026: Object010
+    4300028: Object011
+    4300030: Object012
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4'
+    second: {fileID: 2100000, guid: be245c72b74d43d48aba8320812b5a18, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
