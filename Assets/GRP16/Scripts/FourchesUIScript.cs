@@ -69,7 +69,7 @@ namespace GRP16.JandB
                 }
                 else if (pickupPos.z <= fourches.transform.position.z && fourchesUI.rectTransform.localPosition.y <= pickupUI.rectTransform.localPosition.y)
                 {
-                    if (Vector3.Distance(pickupPos, fourches.transform.position) <= 1)
+                    if (Vector3.Distance(pickupPos, fourches.transform.position) <= 2)
                     {
                         StopPickUpUI();
                     }
