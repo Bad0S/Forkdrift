@@ -9342,6 +9342,7 @@ MonoBehaviour:
   palettes: {fileID: 1145786970}
   leftWheelParticles: {fileID: 2029762845}
   rightWheelParticles: {fileID: 1416965636}
+  difficulty: 0
   timer: {fileID: 2096254808}
 --- !u!54 &689000335
 Rigidbody:
@@ -40306,6 +40307,7 @@ GameObject:
   - component: {fileID: 2096254809}
   - component: {fileID: 2096254808}
   - component: {fileID: 2096254807}
+  - component: {fileID: 2096254810}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40380,6 +40382,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2096254810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2096254806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0349d25381e7603419839ab110a46340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2096718861
 Prefab:
   m_ObjectHideFlags: 0
